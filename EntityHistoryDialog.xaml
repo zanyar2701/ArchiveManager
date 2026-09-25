@@ -1,0 +1,39 @@
+<Window x:Class="ArchiveManager.UI.Views.Dialogs.EntityHistoryDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="تاریخچه پرونده" Height="480" Width="480" WindowStartupLocation="CenterOwner"
+        Background="{StaticResource BackgroundBrush}">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,16">
+            <TextBlock Text="{Binding EntityName}" Style="{StaticResource PageTitleStyle}" />
+            <TextBlock Text="{Binding ArchiveCode}" Style="{StaticResource CaptionTextStyle}" />
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl ItemsSource="{Binding Events}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="{StaticResource BorderBrush2}" BorderThickness="0,0,0,1" Padding="0,10">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Date, StringFormat='yyyy/MM/dd HH:mm'}" Style="{StaticResource CaptionTextStyle}" Margin="0,0,10,0" />
+                                    <TextBlock Text="{Binding EventType}" Style="{StaticResource BodyTextStyle}" FontWeight="SemiBold" />
+                                </StackPanel>
+                                <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextStyle}" TextWrapping="Wrap" Margin="0,2,0,0" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <Button Grid.Row="2" Content="بستن" Click="Close_Click" Style="{StaticResource SecondaryButtonStyle}"
+                HorizontalAlignment="Left" Margin="0,16,0,0" />
+    </Grid>
+</Window>

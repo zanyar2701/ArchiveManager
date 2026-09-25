@@ -1,0 +1,35 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Design tokens derived from the reference screenshot — spec §23 -->
+    <Color x:Key="AccentColor">#7A5C3E</Color>
+    <Color x:Key="AccentHoverColor">#6A4F35</Color>
+    <Color x:Key="BackgroundColor">#EFE8DC</Color>
+    <Color x:Key="SurfaceColor">#FBF9F5</Color>
+    <Color x:Key="BorderColor">#E0D9CC</Color>
+    <Color x:Key="TextPrimaryColor">#2B2620</Color>
+    <Color x:Key="TextSecondaryColor">#7A7266</Color>
+    <Color x:Key="SuccessColor">#3F8F5F</Color>
+    <Color x:Key="WarningColor">#E0A339</Color>
+    <Color x:Key="ErrorColor">#D64545</Color>
+    <Color x:Key="DisabledColor">#C9C2B4</Color>
+
+    <Color x:Key="PdfIconColor">#D64545</Color>
+    <Color x:Key="WordIconColor">#3A6EA5</Color>
+    <Color x:Key="ExcelIconColor">#3F8F5F</Color>
+    <Color x:Key="ZipIconColor">#E0A339</Color>
+    <Color x:Key="PptIconColor">#B85C9E</Color>
+
+    <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
+    <SolidColorBrush x:Key="AccentHoverBrush" Color="{StaticResource AccentHoverColor}" />
+    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}" />
+    <SolidColorBrush x:Key="SurfaceBrush" Color="{StaticResource SurfaceColor}" />
+    <SolidColorBrush x:Key="BorderBrush2" Color="{StaticResource BorderColor}" />
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimaryColor}" />
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondaryColor}" />
+    <SolidColorBrush x:Key="SuccessBrush" Color="{StaticResource SuccessColor}" />
+    <SolidColorBrush x:Key="WarningBrush" Color="{StaticResource WarningColor}" />
+    <SolidColorBrush x:Key="ErrorBrush" Color="{StaticResource ErrorColor}" />
+    <SolidColorBrush x:Key="DisabledBrush" Color="{StaticResource DisabledColor}" />
+
+</ResourceDictionary>

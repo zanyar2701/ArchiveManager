@@ -1,0 +1,85 @@
+<Window x:Class="ArchiveManager.UI.Views.Dialogs.EntityTransferDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="انتقال پرونده" Height="760" Width="460" WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize" Background="{StaticResource BackgroundBrush}">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="B2V" />
+    </Window.Resources>
+    <ScrollViewer Margin="20">
+        <StackPanel>
+            <TextBlock Text="انتقال پرونده" Style="{StaticResource PageTitleStyle}" Margin="0,0,0,16" />
+
+            <TextBlock Text="نام فعلی:" Style="{StaticResource FieldLabelStyle}" />
+            <TextBlock Text="{Binding CurrentName}" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,12" />
+
+            <TextBlock Text="نوع هویت فعلی:" Style="{StaticResource FieldLabelStyle}" />
+            <TextBlock Text="{Binding CurrentEntityTypeDisplay}" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,12" />
+
+            <TextBlock Text="مرحله فعلی:" Style="{StaticResource FieldLabelStyle}" />
+            <TextBlock Text="{Binding CurrentStageName}" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,16" />
+
+            <Separator Margin="0,0,0,16" />
+
+            <TextBlock Text="مرحله مقصد:" Style="{StaticResource FieldLabelStyle}" />
+            <ComboBox ItemsSource="{Binding TargetStages}" SelectedItem="{Binding SelectedTargetStage}"
+                      Style="{StaticResource FormInputStyle}" Margin="0,0,0,12" />
+
+            <TextBlock Text="نوع هویت جدید:" Style="{StaticResource FieldLabelStyle}" />
+            <ComboBox ItemsSource="{Binding EntityTypes}" SelectedItem="{Binding NewEntityType}"
+                      Style="{StaticResource FormInputStyle}" Margin="0,0,0,12" />
+
+            <TextBlock Text="نام جدید:" Style="{StaticResource FieldLabelStyle}" />
+            <TextBox Text="{Binding NewName, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource FormInputStyle}" Margin="0,0,0,12" />
+
+            <TextBlock Text="تاریخ انتقال:" Style="{StaticResource FieldLabelStyle}" />
+            <TextBlock Text="{Binding TransferDate, StringFormat='yyyy/MM/dd HH:mm'}" Style="{StaticResource BodyTextStyle}" Margin="0,0,0,12" />
+
+            <TextBlock Text="علت / توضیحات:" Style="{StaticResource FieldLabelStyle}" />
+            <TextBox Text="{Binding Reason, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource FormInputStyle}"
+                     AcceptsReturn="True" Height="60" TextWrapping="Wrap" Margin="0,0,0,16" />
+
+            <!-- Optional company registration info — only relevant once the new
+                 identity type is Company; never required for a Person (addendum). -->
+            <StackPanel Visibility="{Binding ShowCompanyProfileFields, Converter={StaticResource B2V}}">
+                <Separator Margin="0,0,0,12" />
+                <TextBlock Text="اطلاعات ثبت شرکت (اختیاری)" Style="{StaticResource PanelHeaderStyle}" Margin="0,0,0,10" />
+
+                <TextBlock Text="شناسه ملی:" Style="{StaticResource FieldLabelStyle}" />
+                <TextBox Text="{Binding NationalId}" Style="{StaticResource FormInputStyle}" Margin="0,0,0,10" />
+
+                <TextBlock Text="شماره ثبت:" Style="{StaticResource FieldLabelStyle}" />
+                <TextBox Text="{Binding RegistrationNumber}" Style="{StaticResource FormInputStyle}" Margin="0,0,0,10" />
+
+                <TextBlock Text="نوع شرکت:" Style="{StaticResource FieldLabelStyle}" />
+                <TextBox Text="{Binding CompanyType}" Style="{StaticResource FormInputStyle}" Margin="0,0,0,10" />
+
+                <TextBlock Text="نام مدیرعامل:" Style="{StaticResource FieldLabelStyle}" />
+                <TextBox Text="{Binding Ceo}" Style="{StaticResource FormInputStyle}" Margin="0,0,0,10" />
+
+                <TextBlock Text="اطلاعات تماس:" Style="{StaticResource FieldLabelStyle}" />
+                <TextBox Text="{Binding ContactInformation}" Style="{StaticResource FormInputStyle}" Margin="0,0,0,10" />
+
+                <TextBlock Text="Website:" Style="{StaticResource FieldLabelStyle}" />
+                <TextBox Text="{Binding Website}" Style="{StaticResource FormInputStyle}" Margin="0,0,0,16" />
+            </StackPanel>
+
+            <Border Background="{StaticResource SurfaceBrush}" BorderBrush="{StaticResource BorderBrush2}" BorderThickness="1"
+                    CornerRadius="8" Padding="10" Margin="0,0,0,12">
+                <TextBlock Text="{Binding PreviewText}" TextWrapping="Wrap" Style="{StaticResource BodyTextStyle}" />
+            </Border>
+
+            <TextBlock Text="{Binding ErrorMessage}" Foreground="{StaticResource ErrorBrush}" TextWrapping="Wrap" Margin="0,0,0,12" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="8" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="لغو" Command="{Binding CancelCommand}" Style="{StaticResource SecondaryButtonStyle}" />
+                <Button Grid.Column="2" Content="انتقال پرونده" Command="{Binding ConfirmCommand}" Style="{StaticResource PrimaryButtonStyle}" />
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</Window>
